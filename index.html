@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Our magical night</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
+
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.min.css">
+</head>
+<body>
+
+  <!-- 💖 Monthsary Preloader -->
+  <div id="monthsaryPreloader">
+    <div class="monthsary-text">Happy Monthsary, My Love 💖</div>
+  </div>
+
+  <!-- Background layers -->
+  <div id="bg-bokeh" aria-hidden="true" class="bokeh">
+    <span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="b4"></span>
+  </div>
+  
+  
+  <canvas id="petals" class="petal-canvas" aria-hidden="true"></canvas>
+
+  <!-- Music control -->
+  <div class="music-control" id="musicControl">
+    <audio id="bgAudio" loop preload="auto">
+      <source src="assets/music.mp3" type="audio/mpeg">
+    </audio>
+    <button id="playBtn" title="Play/Pause">⏯︎</button>
+    <button id="muteBtn" title="Mute/Unmute">🔈</button>
+  </div>
+
+  <audio id="heartbeatAudio" preload="auto">
+   <source src="assets/heartbeat.mp3" type="audio/mpeg">
+  </audio>
+
+
+  <audio id="paperSound" preload="auto">
+   <source src="assets/paper-rustle.mp3" type="audio/mpeg">
+  </audio>
+
+
+  <main id="app" class="scene-root">
+    <!-- HERO (opening) -->
+    <section id="hero" class="panel hero pastel">
+      <div class="hero-inner">
+        <nav class="topbar">
+          <!-- <div class="logo">Our magical night</div> -->
+          <!-- <button id="giftBtn" class="ghost">Get your gift</button> -->
+        </nav>
+
+        <div class="center-stage">
+          <div class="moon-wrap parallax" data-depth="0.08">
+            <img src="assets/moon.png" alt="Moon" class="moon">
+            <!-- Pink comet (CSS made) -->
+            <div id="comet" class="comet" aria-hidden="true"></div>
+          </div>
+
+          <h1 class="title">Merry Christmas</h1>
+          <p class="subtitle">A little letter from me to your heart</p>
+
+          <div class="action-row">
+            <button id="openEnvelopeBtn" class="cta">💌 I love you</button>
+          </div>
+        </div>
+
+        <img src="assets/mountains.png" alt="" class="mountains">
+        <!-- <img src="assets/trees.png" alt="" class="trees"> -->
+      </div>
+    </section>
+
+    <div id="blurOverlay"></div>
+
+    <!-- LETTER full screen (Option 2) -->
+    <section id="letter" class=" hidden">
+      <div class="letter-card" role="region" aria-label="Letter">
+        <div class="letter-top">
+          <div class="from">My dearest,</div>
+          <button id="closeLetter" class="ghost small">Close</button>
+        </div>
+
+        <div id="letterContent" class="letter-content" tabindex="0">
+          <!-- EDIT: paste your long letter here -->
+          Dear love,
+
+          (Replace this placeholder with your full message — it's scrollable and uses a warm serif.)
+          
+          With all my heart,
+          — A
+        </div>
+
+        <div class="letter-actions">
+          <button id="sendWish" class="cta">Send my wish →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LANTERN FESTIVAL (separate scene after letter closed) -->
+    <section id="lanterns" class="panel hidden">
+      <div class="lantern-stage">
+        <img src="assets/mountains.png" alt="" class="lantern-mountains">
+        <div id="lanternArea" class="lantern-area"></div>
+
+        <div class="lantern-ui">
+          <h2>Like these lanterns, our love kept rising...</h2>
+          <p class="muted">Tap the special lantern when you see it</p>
+          <div class="controls">
+            <button id="gotoTimelineBtn" class="cta">Next: Our Story →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE (full screen slides) -->
+    <section id="timeline" class="panel hidden">
+      <div class="slides">
+        <article class="slide active" data-index="1">
+          <div class="paper-note">
+            <div class="corner tl"></div>
+            <div class="corner br"></div>
+            <h2>1 — Strangers</h2>
+            <p>Two lives, apart and unknown.</p>
+            <button class="nextSlide cta">Next</button>
+          </div>
+        </article>
+
+        <article class="slide" data-index="2">
+          <div class="paper-note">
+            <div class="corner tl"></div>
+            <div class="corner br"></div>
+            <h2>2 — First spark</h2>
+            <p>A message, a smile — the beginning.</p>
+            <button class="nextSlide cta">Next</button>
+          </div>
+        </article>
+
+        <article class="slide" data-index="3">
+          <div class="paper-note">
+            <div class="corner tl"></div>
+            <div class="corner br"></div>
+            <h2>3 — Growing closer</h2>
+            <p>Messages, late nights, small moments.</p>
+            <button class="nextSlide cta">Next</button>
+          </div>
+        </article>
+
+        <article class="slide" data-index="4">
+          <div class="paper-note">
+            <div class="corner tl"></div>
+            <div class="corner br"></div>
+            <h2>4 — Falling</h2>
+            <p>It stopped being casual — you became my home.</p>
+            <button id="toFinal" class="cta">Release our lantern →</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FINAL LANTERN -->
+    <section id="final" class="panel hidden">
+      <div class="final-wrap">
+        <div id="finalLantern" class="big-lantern">A ♥ J</div>
+        <div id="heartStage">
+         <div class="heart left"></div>
+         <div class="heart right"></div>
+         <div class="heart merged"></div>
+        </div>
+        
+
+        <div id="finalMsg" class="final-msg hidden">
+         <div class="paper-note final-note">
+          <h2>Merry Christmas, My Love.</h2>
+          <p>
+           Here’s to many more magical moments together.
+           <br><br>
+           Always yours, <br>
+           <span class="signature">— Akash</span>
+          </p>
+          <div class="love-line hidden" id="loveLine">
+            I love you
+          </div>
+
+          <button id="restartBtn" class="cta">Experience again</button>
+        </div>
+      </div>
+
+    </section>
+  
+  </main>
+
+  <script src="app.min.js" defer></script>
+</body>
+</html>
+
