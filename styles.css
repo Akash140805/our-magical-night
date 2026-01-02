@@ -951,8 +951,11 @@ main{position:relative;z-index:10}
 
 .letter-card {
   position: relative;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
+
 
 .letter-card::after {
   content: "💖";

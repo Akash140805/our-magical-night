@@ -89,14 +89,14 @@ if (preloader) {
   let v = 0;
   const fade = setInterval(() => {
     v += 0.05;
-    paperSound.volume = Math.min(v, 0.35);
-    if (v >= 0.35) clearInterval(fade);
+    paperSound.volume = Math.min(v, 0.30);
+    if (v >= 0.30) clearInterval(fade);
   }, 40);
 }
 
 const heartbeatAudio = document.getElementById('heartbeatAudio');
 if (heartbeatAudio) {
-  heartbeatAudio.volume = 0.55; // soft & romantic
+  heartbeatAudio.volume = 0.60; // soft & romantic
 }
 
 
@@ -109,8 +109,8 @@ if (heartbeatAudio) {
     let v = 0;
     const fadeIn = setInterval(() => {
       v += 0.05;
-      bgAudio.volume = Math.min(v, 1);
-      if (v >= 1) clearInterval(fadeIn);
+      bgAudio.volume = Math.min(v, 0.22);
+      if (v >= 0.22) clearInterval(fadeIn);
     }, 120);
   }
 });
